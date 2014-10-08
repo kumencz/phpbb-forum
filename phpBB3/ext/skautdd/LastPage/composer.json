@@ -1,0 +1,25 @@
+{
+    "name": "skautdd/LastPage",
+    "type": "phpbb-extension",
+    "description": "Jump to latest post in topic.",
+    "homepage": "http://skautdd.skauting.cz",
+    "version": "0.0.1",
+    "keywords": ["phpbb", "extension", "forum", "topic","post"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jakub Pechacek (kumen)",
+            "homepage": "http://skautdd.skauting.cz",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Jump to last page in topic",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.0-RC4,<3.2.*@dev"
+        }
+    }
+}

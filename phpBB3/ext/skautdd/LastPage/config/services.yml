@@ -1,0 +1,8 @@
+services:
+    skautdd.LastPage.listener:
+        class: skautdd\LastPage\event\listener
+        arguments:
+            - @config
+            - @template
+        tags:
+            - { name: event.listener }

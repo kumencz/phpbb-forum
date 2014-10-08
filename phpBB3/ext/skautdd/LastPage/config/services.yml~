@@ -1,0 +1,8 @@
+services:
+    skautdd.f_perm.listener:
+        class: skautdd\f_perm\event\listener
+        arguments:
+            - @config
+            - @template
+        tags:
+            - { name: event.listener }
