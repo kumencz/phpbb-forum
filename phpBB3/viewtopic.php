@@ -61,6 +61,23 @@ if (!$topic_id && !$post_id)
 {
 	trigger_error('NO_TOPIC');
 }
+/**
+* Event to jumping to last page/post as default
+*
+* @event core.viewtopic_assign_template_vars_before
+* @var	int		forum_id			Forum ID
+* @var	int		topic_id			Topic ID
+* @var	int		post_id				Post ID
+* @var	int		start				Start at post
+* @since 3.1.x  - custom event
+*/
+$vars = array(
+	'forum_id',
+	'topic_id',
+	'post_id',
+	'start'
+);
+extract($phpbb_dispatcher->trigger_event('core.viewtopic_input', compact($vars)));
 
 $phpbb_content_visibility = $phpbb_container->get('content.visibility');
 
