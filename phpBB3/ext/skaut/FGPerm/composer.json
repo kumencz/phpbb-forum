@@ -1,0 +1,25 @@
+{
+    "name": "skautdd/FGPerm",
+    "type": "phpbb-extension",
+    "description": "Show group premission of forum.",
+    "homepage": "http://skautdd.skauting.cz",
+    "version": "0.0.1",
+    "keywords": ["phpbb", "extension", "forum", "group","permission"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jakub Pechacek (kumen)",
+            "homepage": "http://skautdd.skauting.cz",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Show forum group permission",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.0-RC4,<3.2.*@dev"
+        }
+    }
+}
