@@ -1,0 +1,36 @@
+SkautChat_read:
+    pattern:  /chat-read
+    defaults: { _controller: skautdd.SkautChat.main:read }
+    requirements:
+        _method:  POST
+SkautChat_changing_room:
+    pattern:  /chat-changing_room
+    defaults: { _controller: skautdd.SkautChat.main:changing_room }
+    requirements:
+        _method:  POST
+SkautChat_add:
+    pattern:  /chat-add
+    defaults: { _controller: skautdd.SkautChat.main:add }
+    requirements:
+        _method:  POST
+SkautChat_dalete:
+    pattern:  /chat-delete
+    defaults: { _controller: skautdd.SkautChat.main:delete }
+    requirements:
+        _method:  POST 
+SkautChat_focus:
+    pattern:  /chat-focus
+    defaults: { _controller: skautdd.SkautChat.main:focus }
+    requirements:
+        _method:  POST
+SkautChat_history:
+    pattern:  /chat-history-{page}
+    defaults: { _controller: skautdd.SkautChat.main:history, page: 0 }
+    requirements:
+        _method:  POST
+        page: \+d
+
+
+SkautChat_controller:
+    pattern: /chat
+    defaults: { _controller: skautdd.SkautChat.main:init }

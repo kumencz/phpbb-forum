@@ -1,0 +1,7 @@
+#ignore soubory vsude
+*~
+
+
+#ignore files
+*.html
+

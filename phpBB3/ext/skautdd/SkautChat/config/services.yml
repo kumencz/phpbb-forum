@@ -1,0 +1,31 @@
+parameters:
+    SkautChat.chat.table: %core.table_prefix%chat
+    SkautChat.chat_rooms.table: %core.table_prefix%chat_rooms
+    SkautChat.chat_rooms_read_status.table: %core.table_prefix%chat_rooms_read_status
+    SkautChat.chat_sessions.table: %core.table_prefix%chat_sessions
+
+services:
+    skautdd.SkautChat.listener:
+        class: skautdd\SkautChat\event\listener
+        arguments:
+            - @config
+            - @template
+            - @controller.helper
+        tags:
+            - { name: event.listener }
+    skautdd.SkautChat.main:
+        class: skautdd\SkautChat\controller\main
+        arguments:
+            - @auth
+            - @cache
+            - @config
+            - @dbal.conn
+            - @controller.helper
+            - @template
+            - @user
+            - %core.root_path%
+            - .%core.php_ext%
+            - %SkautChat.chat.table%
+            - %SkautChat.chat_rooms.table%
+            - %SkautChat.chat_rooms_read_status.table%
+            - %SkautChat.chat_sessions.table%
