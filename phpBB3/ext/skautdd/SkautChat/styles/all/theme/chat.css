@@ -15,10 +15,6 @@
 	top:0px;
 	width:500px;
 }
-.chat_header_button{
-	height: 50px;
-	width: 20px;
-}
 .chat_header_controll{
 	/*display:inline;*/
 	/*margin:0 100px;*/
@@ -31,15 +27,19 @@
 .chatinput {
 	
 }
+#smile_bar{
+	display:none;
+}
 /* === LEFT BAR === */
 .left_bar{
-	width: 85%;
+	margin-right:5px;
+	width: 84%;
 	overflow:hidden;
-	height:375px;
-	float:left;	
+	height:415px;
+	float:left;
 }
 .chat {
-	width: 100%;
+
 	height:350px;
 	overflow:auto;
 }
@@ -88,7 +88,7 @@
 .right_bar {
 	width: 15%;
 	overflow:hidden;
-	height:375px;
+	height:415px;
 	float:left;	
 	position: relative;
 }
@@ -107,7 +107,7 @@
 	max-height:210px;
 	background:#CCCCCC;
 	position:absolute;
-	bottom:45px;
+	bottom:20px;
 }
 .online_users li, .offline_users li{
 	list-style-type: none;
@@ -140,7 +140,7 @@
 	font-size: 16px;
 	padding-left:50%;
 	position:absolute;
-	bottom:25px;
+	bottom:0px;
 }
 #show_offline:hover, #hide_offline:hover{
 	background:#888888;
@@ -149,11 +149,11 @@
 	display:none;
 }
 .button_room {
-	width:100%;
-	height: 30px;
+	display: block;
+	height: 25px;
 	margin-bottom: 5px;
-	padding-top: 1px;
-	padding-bottom: 1px;
+	text-align:center;
+	vertical-align:middle;
 	font-weight: bold;
 	font-size: 20px;
 	/*border: 1px solid #666666;
@@ -168,12 +168,16 @@
 	color: #AAFF00;
 }*/
 .aktual {
-	/*background-color: #336600; */
-	background-color: #CCFF00;
+	/*background-color: #CCFF00;*/
+	background-image: linear-gradient(to bottom, #FFF, #CCFF00);
+}
+.aktual:hover {
+	/*background-color: #CCFF00;*/
+	background-image: linear-gradient(to bottom, #CCFF00, #FFF);
 }
 .unread {
-	background-color: #FFCC00;
-	/* color: #FF0000; */
+	/*background-color: #FFCC00;*/
+	background-image: linear-gradient(to bottom, #FFF, #FFCC00);
 }
 .unread:hover {
 	color: #F0F0F0;
@@ -186,11 +190,11 @@
 	width:100%;
 	height:23px;
 	position:absolute;
-	bottom:0px;
+	top:100px;
 }
 .button_hist{
-	width:100%;
-	height: 100%;
+	width:40px;
+	height: 20px;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	font-weight: bold;
@@ -205,8 +209,8 @@
 .online_img {
 	vertical-align:middle;
 }
-.act_indicator {
-	visibility:hidden;
+#act_indicator {
+	display:none;
 }
 .rot_90{
 	border:0px solid red;

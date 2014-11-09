@@ -2,7 +2,7 @@
 var type = 'receive';
 var post_time = 0;
 var read_interval = 5000;
-var interval = setInterval('handle_send("read", last_post_id);', read_interval);
+var interval = window.setInterval('handle_send("read", last_post_id);', read_interval);
 var unread_rooms = 0;
 var URL = "./chat-"
 var xmlHttp = http_object();
@@ -78,6 +78,7 @@ function change_room(room,username,colour)
 		param += '&private_user_id=0';
 		param += '&private_room=0';
 		current_private_room = 0;
+		current_room_id = room;
 	}
 
 	type = 'send';
@@ -91,40 +92,36 @@ function change_room(room,username,colour)
 }
 function handle_send(mode, f, page)
 {
-	if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0)
+	indicator_switch('on');
+	type = 'receive';
+	param = 'mode=' + mode;
+	param += '&last_post_id=' + last_post_id;
+	param += '&current_room_id=' + current_room_id;
+
+	if (mode == 'add' && document.postform.message.value != '')
 	{
-		indicator_switch('on');
-		type = 'receive';
-		param = 'mode=' + mode;
-		param += '&last_post_id=' + last_post_id;
-		param += '&current_room_id=' + current_room_id;
-		param += '&unread_rooms=' + unread_rooms;
-
-		if (mode == 'add' && document.postform.message.value != '')
+		type = 'send';
+		for(var i = 0; i < f.elements.length; i++)
 		{
-			type = 'send';
-			for(var i = 0; i < f.elements.length; i++)
-			{
-				elem = f.elements[i];
-				param += '&' + elem.name + '=' + encodeURIComponent(elem.value);
-			}
-			document.postform.message.value = '';
-		}else if (mode == 'hist')
-		{
-			document.getElementById('chat').innerHTML = "";
-
-			type = 'send';
-			param += '&page=' + page;
-		}else if (mode == 'delete')
-		{
-			type = 'delete';
-			param += '&chat_id=' + f;
+			elem = f.elements[i];
+			param += '&' + elem.name + '=' + encodeURIComponent(elem.value);
 		}
-		xmlHttp.open("POST", URL+mode, true);
-		xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xmlHttp.onreadystatechange = handle_return;
-		xmlHttp.send(param);
+		document.postform.message.value = '';
+	}else if (mode == 'history')
+	{
+		document.getElementById('chat').innerHTML = "";
+
+		type = 'send';
+		param += '&page=' + page;
+	}else if (mode == 'delete')
+	{
+		type = 'delete';
+		param += '&post_id=' + f;
 	}
+	xmlHttp.open("POST", URL+mode, true);
+	xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlHttp.onreadystatechange = handle_return;
+	xmlHttp.send(param);
 }
 /* =================================================== RETURN =================================================== */
 function handle_return()
@@ -148,7 +145,7 @@ function handle_return()
 				}
 				last_post_id = main_parse[3];
 				current_room_id = main_parse[4];
-			}
+			}			
 			if(main_parse[5] == "ONLINE")
 			{
 				online_parse = main_parse[6].split('$!$');
@@ -168,6 +165,9 @@ function handle_return()
 						document.getElementById('offline_user_'+users_list[u]).style.display = "block";
 					}
 				}
+				read_interval = online_parse[1]*1000;
+				window.clearInterval(interval);
+				interval = window.setInterval('handle_send("read", last_post_id);', read_interval);
 			}
 			if(main_parse[7] == "UNREAD")
 			{
@@ -211,12 +211,12 @@ function handle_return()
 	}
 }
 /* =================================================== DELETE =================================================== */
-function delete_post(chatid)
+function delete_post(post_id)
 {
 	if(confirm("Opravdu smazat příspěvek?"))
 	{
-		document.getElementById('p' + chatid).style.display = 'none';
-		handle_send('delete', chatid);
+		document.getElementById('p' + post_id).style.display = 'none';
+		handle_send('delete', post_id);
 	}
 }
 
@@ -224,14 +224,22 @@ function indicator_switch(mode)
 {
 	if(document.getElementById("act_indicator"))
 	{
+		var update_interval = document.getElementById("update_interval");
 		var img = document.getElementById("act_indicator");
-		if(img.style.visibility == "hidden" && mode == 'on')
+		if(img.style.display == "none" && mode == 'on')
 		{
-			img.style.visibility = "visible";
+			update_interval.innerHTML = '';
+			update_interval.parentNode.setAttribute('onclick','');
+			img.style.display = "block";
 		}
 		else if (mode == 'off')
 		{
-			img.style.visibility = "hidden"
+			update_interval.parentNode.setAttribute('onclick',"handle_send('read', last_post_id);");
+			update_interval.innerHTML = read_interval/1000 + 's';
+			img.style.display = "none";
+			// reset intervalu po kliknuti
+			window.clearInterval(interval);
+			interval = window.setInterval('handle_send("read", last_post_id);', read_interval);
 		}
 	}
 }
@@ -241,6 +249,18 @@ function playSound(filename)
 	<!-- IF SOUND_NOTIFY -->
 	document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="sounds/' + filename + '.mp3" type="audio/mpeg" /><source src="sounds/' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="sounds/' + filename +'.mp3" /></audio>';
 	<!-- ENDIF -->
+}
+function toogle_smile()
+{
+	var smile = document.getElementById("smile_bar");
+	if(smile.style.display == "none")
+	{
+		smile.style.display = "block";
+	}
+	else
+	{
+		smile.style.display = "none"
+	}	
 }
 function hide_offline()
 {

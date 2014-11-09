@@ -37,8 +37,9 @@ class release_1_0_0 extends \phpbb\db\migration\migration
                 ),
              $this->table_prefix . 'chat_rooms'        => array(
                 'COLUMNS'        		=> array(
-                    'room_id'           => array('UINT:3', NULL, 'auto_increment' // 0),
+                    'room_id'           => array('UINT:3', NULL, 'auto_increment'),
                     'room_name'         => array('VCHAR:20',''),
+                    'groups_granted'    => array('VCHAR',''),
                     'private_room'		=> array('UINT:1', 0),
                     'user1_id'			=> array('UINT:11', 0),
                     'user2_id'        	=> array('UINT:11', 0),
@@ -68,10 +69,11 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-			array('permission.add', array('u_view_chat', true)),
-			array('permission.add', array('u_use_chat', true)),
-			array('permission.add', array('u_use_users_chat', true)),
-			//array('permission.add', array('u_use_chat', true)),
+			array('permission.add', array('u_chat_view', true)),
+			array('permission.add', array('u_chat_use', true)),
+			array('permission.add', array('u_chat_use_users', true)),
+			array('permission.add', array('u_chat_delete_own_posts', true)),
+			array('permission.add', array('u_chat_delete_all_posts', true)),
 		);
 	}
 }

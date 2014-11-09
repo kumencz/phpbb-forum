@@ -15,7 +15,7 @@ SkautChat_add:
         _method:  POST
 SkautChat_dalete:
     pattern:  /chat-delete
-    defaults: { _controller: skautdd.SkautChat.main:delete }
+    defaults: { _controller: skautdd.SkautChat.main:delete_post }
     requirements:
         _method:  POST 
 SkautChat_focus:
@@ -24,12 +24,10 @@ SkautChat_focus:
     requirements:
         _method:  POST
 SkautChat_history:
-    pattern:  /chat-history-{page}
-    defaults: { _controller: skautdd.SkautChat.main:history, page: 0 }
+    pattern:  /chat-history
+    defaults: { _controller: skautdd.SkautChat.main:history}
     requirements:
         _method:  POST
-        page: \+d
-
 
 SkautChat_controller:
     pattern: /chat

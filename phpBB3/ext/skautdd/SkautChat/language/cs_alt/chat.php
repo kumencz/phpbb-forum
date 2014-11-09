@@ -37,5 +37,6 @@ $lang = array_merge($lang, array(
 	'CHAT_HIST'		=> 'Historie chatu',
 	'CHAT_ROOM_HIST'=> 'Historie místnosti',
 	'HIST_PAGE'		=> 'strana',
+	'CHAT_PAGE'		=> 'Chat'
 ));
 ?>
