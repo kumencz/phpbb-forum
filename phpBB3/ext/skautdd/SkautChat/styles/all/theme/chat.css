@@ -24,12 +24,6 @@
 	display:inline;
 	
 }
-.chatinput {
-	
-}
-#smile_bar{
-	display:none;
-}
 /* === LEFT BAR === */
 .left_bar{
 	margin-right:5px;
@@ -82,7 +76,18 @@
 	background-image: none;*/
 }
 
-
+.hist_buttons{
+	float:right;
+	margin-bottom:3px;
+	height:25px;
+	/*width:100%;*/
+}
+.hist_posts{
+	max-height:320px;
+	padding-bottom:1px;
+	overflow:auto;
+	width:100%;
+}
 
 /* === RIGHT BAR === */
 .right_bar {
@@ -92,19 +97,22 @@
 	float:left;	
 	position: relative;
 }
-.roomform {
+#room_list {
 	margin-left: 5px;
-	height:120px;
+	height:190px;
 	overflow:auto;
 }
-
+#private_rooms{
+	max-height:72px;
+	overflow:auto;
+}
 #current_private_room{
 	display:none;
 }
 .users_list{
 	overflow:auto;
 	width:100%;
-	max-height:210px;
+	max-height:170px;
 	background:#CCCCCC;
 	position:absolute;
 	bottom:20px;
@@ -180,7 +188,7 @@
 	background-image: linear-gradient(to bottom, #FFF, #FFCC00);
 }
 .unread:hover {
-	color: #F0F0F0;
+	background-image: linear-gradient(to bottom, #FFCC00, #FFF);
 }
 
 

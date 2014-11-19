@@ -28,18 +28,20 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'UNIT'			=> 'sekund',
-	'CHAT_HIST'		=> 'Historie chatu',
-	'HIST_PAGE'		=> 'strana',
+	'UNIT'			=> 'second',
+	'CHAT_HIST'		=> 'Chat history',
+	'HIST_PAGE'		=> 'page',
 	'CHAT_PAGE'		=> 'Chat',
-	'ROOMS'					=> 'Místnosti',
-	'NEW_ROOM'				=> 'Nová veřejná místnost',
-	'ROOM_NAME'				=> 'Název veřejné místnosti',
-	'ROOM_PERMISSIONS'		=> 'Oprávnění veřejné místnosti',
-	'ROOM_PERMISSIONS_EXP'	=> 'Výčet skupin které mají oprávnění pro čtení a zápis a v této místnosti',
-	'CREATE_ROOM'			=> 'Vytvořit místnost',
-	'ROOM_LIST'				=> 'Seznam všech veřejných místností',
-	'ACP_CHAT_CONFIG'		=> 'Místnosti'
+	'ROOMS'					=> 'Room',
+	'NEW_ROOM'				=> 'New public room',
+	'ROOM_NAME'				=> 'Name of public room',
+	'ROOM_PERMISSIONS'		=> 'Permission  of public room',
+	'ROOM_PERMISSIONS_EXP'	=> 'List of groups with permission for read and write in this room',
+	'CREATE_ROOM'			=> 'Create room',
+	'ROOM_LIST'				=> 'List of public rooms',
+	'ACP_CHAT_CONFIG_ROOMS'	=> 'Rooms'
+	'ACP_CHAT_CONFIG'		=> 'Settings'
+	'ACP_CHAT_TITLE'		=> 'CHAT'
 	
 ));
 ?>

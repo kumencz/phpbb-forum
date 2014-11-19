@@ -19,7 +19,7 @@
     "extra": {
         "display-name": "Ajax chat",
         "soft-require": {
-            "phpbb/phpbb": ">=3.1.0-RC4,<3.2.*@dev"
+            "phpbb/phpbb": ">=3.1.1,<3.2.*@dev"
         }
     }
 }

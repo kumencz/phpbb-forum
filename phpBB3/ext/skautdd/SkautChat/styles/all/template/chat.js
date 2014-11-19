@@ -42,7 +42,7 @@ function change_room(room,username,colour)
 		document.getElementById('room_' + current_room_id).classList.add('normal');
 	}else
 	{
-		document.getElementById("room_list").removeChild(document.getElementById('private_room_' + current_private_room));
+		document.getElementById("private_rooms").removeChild(document.getElementById('private_room_' + current_private_room));
 	}		
 
 	if(username != 0)
@@ -53,16 +53,14 @@ function change_room(room,username,colour)
 			document.getElementById('private_room_' + room).classList.add('aktual');
 		}else
 		{
-			var new_room = document.createElement("input");
-			new_room.setAttribute('type', 'button');
+			var new_room = document.createElement("span");
 			new_room.setAttribute('id', 'private_room_' + room);
+			new_room.classList.add('button');
 			new_room.classList.add('button_room');
-			new_room.classList.add('normal');
 			new_room.classList.add('aktual');
-			new_room.style.display = 'inline-block';
 			new_room.style.color = '#'+colour;
-			new_room.value = username;
-			document.getElementById("room_list").appendChild(new_room);
+			new_room.innerHTML = username;
+			document.getElementById("private_rooms").appendChild(new_room);
 		}
 		param = 'current_room_id=0';
 		param += '&private_user_id=' + room;
@@ -104,6 +102,10 @@ function handle_send(mode, f, page)
 		for(var i = 0; i < f.elements.length; i++)
 		{
 			elem = f.elements[i];
+			if(current_private_room)
+			{
+				param += '&private_room=1';
+			}
 			param += '&' + elem.name + '=' + encodeURIComponent(elem.value);
 		}
 		document.postform.message.value = '';
@@ -193,16 +195,15 @@ function handle_return()
 						}
 					}else
 					{
-						var new_room = document.createElement("input");
-						new_room.setAttribute('type', 'button');
+						var new_room = document.createElement("span");
 						new_room.setAttribute('id', 'private_room_' + parsed_room[0]);
+						new_room.classList.add('button');
 						new_room.classList.add('button_room');
-						new_room.classList.add('normal');
 						new_room.classList.add('unread');
-						new_room.value = parsed_room[1];
+						new_room.innerHTML = parsed_room[1];
 						new_room.style.color = '#'+parsed_room[2];
 						new_room.setAttribute('onclick','change_room('+parsed_room[0]+',\''+parsed_room[1]+'\',\''+parsed_room[2]+'\')');
-						document.getElementById("room_list").appendChild(new_room);
+						document.getElementById("private_rooms").appendChild(new_room);
 					}
 				}
 			}
@@ -252,14 +253,13 @@ function playSound(filename)
 }
 function toogle_smile()
 {
-	var smile = document.getElementById("smile_bar");
-	if(smile.style.display == "none")
+	if(document.getElementById("smile_bar").style.display == "none")
 	{
-		smile.style.display = "block";
+		document.getElementById("smile_bar").style.display = "block";
 	}
 	else
 	{
-		smile.style.display = "none"
+		document.getElementById("smile_bar").style.display = "none"
 	}	
 }
 function hide_offline()

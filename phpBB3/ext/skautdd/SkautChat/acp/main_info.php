@@ -18,7 +18,8 @@ class main_info
 			'title'		=> 'ACP_CHAT_TITLE',
 			'version'	=> '1.0.0',
 			'modes'		=> array(
-				'settings'	=> array('title' => 'ACP_CHAT_CONFIG', 'auth' => 'acl_a_board', 'cat' => array('ACP_CHAT_TITLE')),
+				'chat_rooms'	=> array('title' => 'ACP_CHAT_CONFIG_ROOMS', 'auth' => 'acl_a_board', 'cat' => array('ACP_CHAT_TITLE')),
+				'chat_setting'	=> array('title' => 'ACP_CHAT_CONFIG', 'auth' => 'acl_a_board', 'cat' => array('ACP_CHAT_TITLE')),
 			),
 		);
 	}
