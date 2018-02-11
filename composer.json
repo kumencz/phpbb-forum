@@ -1,0 +1,25 @@
+{
+    "name": "skautdd/post2mail",
+    "type": "phpbb-extension",
+    "description": "Send new posts to email.",
+    "homepage": "http://skautdd.skauting.cz",
+    "version": "0.1",
+    "keywords": ["phpbb", "extension", "forum", "group","email"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jakub Pecháček (kumen)",
+            "homepage": "http://skautdd.skauting.cz",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Post2mail",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.2,<3.3.*@dev"
+        }
+    }
+}

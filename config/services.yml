@@ -1,0 +1,15 @@
+services:
+  skautdd.post2mail.listener:
+        class: skautdd\post2mail\event\listener
+        arguments:
+            - @config
+            - @template
+            - @user
+            - @dbal.conn
+            - @controller.helper
+            - @auth
+            - %core.root_path%
+            - .%core.php_ext%
+        tags:
+            - { name: event.listener }
+            

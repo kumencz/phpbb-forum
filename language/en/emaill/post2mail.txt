@@ -1,0 +1,79 @@
+<html>
+	<head>
+	<base href='{FORUM_BASE_ADDRESS}'>
+	<META http-equiv='content-type' content='text/html; charset=UTF-8'>
+	</head>
+	<body>
+		{POST_FORUM_PARENTS}
+		<a href='{POST_FORUM_URL}'>{POST_FORUM_NAME}</a>
+		«<a href='{POST_TOPIC_URL}'>{POST_TOPIC_NAME}</a>
+		«<a href='{POST_URL}'><b>{POST_SUBJECT}</b></a>
+		
+		<br />
+		<table class='table_info'>
+			<!-- IF POST_EDITOR -->
+				<tr>
+					<td rowspan=2 align="left">
+					<!-- IF POST_AVATAR -->
+						{POST_AVATAR}
+					<!-- ELSE -->
+						<img src="{T_THEME_PATH}/images/no_avatar.gif" width="30px;" height="30px;" alt="" />
+					<!-- ENDIF -->
+					</td>
+					<td>{L_P2M_ORIGINAL_BY}:<font size=\"4\"><a href='$u_profile_url'><b>{POST_USERNAME}</b></a></font>{L_P2M_EDITOR}<a href='{EDITOR_PROFILE_URL}'><font size=\"4\"><b>{POST_EDITOR}</b></a></font>
+			<!-- ELSE -->
+				<tr>
+					<td rowspan=2 align="left">
+					<!-- IF POST_AVATAR -->
+						{POST_AVATAR}
+					<!-- ELSE -->
+						<img src="{T_THEME_PATH}/images/no_avatar.gif" width="30px;" height="30px;" alt="" />
+					<!-- ENDIF -->
+					</td>
+					<td><a href='{POSTER_PROFILE_URL}'><font size="4"><b>{POST_USERNAME}</b></a></font><!-- IF S_SHOW_EMAIL --> (<a href='mailto:{POST_EMAIL}'>{POST_EMAIL}</a>)<!-- ENDIF --></td>
+				</tr>
+			<!-- ENDIF -->
+			
+			<tr>
+				<td><b>{CURRENT_TIME}</b></td>
+			</tr>
+		</table>
+		<br>
+		<table class='table_post' width="100%" border=1>
+			<tr>
+				<td>
+				<div class='content'>{MESSAGE}
+					<!-- IF S_ATTACHMENT -->
+						{P2M_ATTACHMENTS}
+						
+					<!-- ENDIF -->
+					<!-- IF POST_SIGNATURE -->
+						<hr>					
+						<div style="font-size: 8px" class='signature'>{POST_SIGNATURE}</div>
+					<!-- ENDIF -->
+				</div>
+				</td>
+			</tr>
+		</table>
+		
+		<table>
+			<tr>
+				<td width=90><a href='http://www.skautdd.skauting.cz/forum/posting.php?mode=reply&f=37&t=351'>{L_P2M_REPLY}</a></td>
+				<td width=70><a href='http://www.skautdd.skauting.cz/forum/posting.php?mode=quote&f=37&p=5890'>{L_P2M_QUOTE}</a></td>
+				<td width=70><a	href='http://www.skautdd.skauting.cz/forum/posting.php?mode=edit&f=37&p=5890'>{L_P2M_EDIT}</a></td>
+				<td width=70><a href='http://www.skautdd.skauting.cz/forum/posting.php?mode=delete&f=37&p=5890'>{L_P2M_DELETE}</a></td>
+			</tr>
+		</table>
+		<!-- IF POST_EDITOR -->
+			<div class='notice'>
+				{L_P2M_EDITED_BY}: {POST_EDITOR},</br>
+				{L_P2M_EDIT_REASON}: <em>{EDIT_REASON}</em>
+			</div>
+			</br>
+		<!-- ENDIF -->
+		<a href="{FORUM_BASE_ADDRESS}">{FORUM_BASE_ADDRESS}</a>
+	</body>
+</html>
+
+
+
